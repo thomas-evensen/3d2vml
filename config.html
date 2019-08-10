@@ -1,0 +1,349 @@
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>config</title>
+<meta name="Author" content="hitme@norwegianbastard.net">
+
+
+<style type="text/css">
+
+	.cont	{	position:absolute; top: 10; left: 10; width: 200; height: 100%; font-family: arial,verdana, tahoma; font-size: 8pt;	}
+
+</style>
+
+
+<script language="javascript" type="text/javascript">
+
+
+
+var d = document;
+var p = parent;
+
+
+
+function render()	 {
+
+p.firstTime = false;
+p.m = multiply.value;
+
+p.sR = sR.value;
+p.sG = sG.value;
+p.sB = sB.value;
+
+p.R = R.value;
+p.G = G.value;
+p.B = B.value;
+
+p.A = A.value;
+
+W.disabled = false;
+H.disabled = false;
+bR.disabled = false;
+bG.disabled = false;
+bB.disabled = false;
+upd.disabled = false;
+
+
+
+
+p.Lx = null;
+p.Ly = null;
+p.Lz = null;
+p.Li = null;
+
+p.Lx =	new Array();
+p.Ly =	new Array();
+p.Lz =	new Array();
+p.Li =	new Array();
+
+var inum = IF.check();
+
+
+var N = 0;
+
+for(var i = 0; i<=inum.length-1;i++)	{
+
+p.Lx[N] = parseInt(inum[i].value); i++;
+p.Ly[N] = parseInt(inum[i].value); i++;
+p.Lz[N] = parseInt(inum[i].value); i++;
+if(inum[i].value==0) p.Li[N] = false;	else	p.Li[N] = parseFloat(inum[i].value);
+
+N++
+
+}
+
+
+
+
+
+p.render.location.reload();
+
+
+}
+
+
+function update()	 {
+
+p.render.mainGroup.style.width = W.value;
+p.render.mainGroup.style.height = H.value;
+p.render.d.body.style.backgroundColor = "rgb("+bR.value+","+bG.value+","+bB.value+")";
+
+
+}
+
+
+
+
+function cModel()	 {
+
+p.model = model.options[model.selectedIndex].value;
+
+
+multiply.value = p.mul[model.selectedIndex];
+
+}
+
+function cStroke(el)	{
+
+if(el.checked) {
+p.doStroke = true;
+sR.disabled = false;
+sG.disabled = false;
+sB.disabled = false;
+} 
+else {
+p.doStroke = false;
+sR.disabled = true;
+sG.disabled = true;
+sB.disabled = true;
+}
+
+}
+
+function cLights(el)	{
+var inum = IF.check();
+
+
+if(el.checked) {
+p.doShade = true;
+
+
+for(var i = 0; i<=inum.length-1;i++)	{
+
+inum[i].disabled = false;
+
+
+}
+
+}
+
+else	{
+p.doShade = false;
+for(var i = 0; i<=inum.length-1;i++)	{
+
+inum[i].disabled = true;
+
+
+}
+}
+
+}
+
+function cFill(el)	{
+
+if(el.checked) {		
+p.doFill = true;
+ownfill.disabled = false;
+if(!ownfill.checked)	{}
+else{
+R.disabled = false;
+G.disabled = false;
+B.disabled = false;
+}
+} 
+
+else {								
+p.doFill = false
+ownfill.disabled = true;
+R.disabled = true;
+G.disabled = true;
+B.disabled = true;
+}
+
+}
+
+function cOFill(el)	{
+
+if(el.checked) {
+p.doOwnFill = true;
+R.disabled = false;
+G.disabled = false;
+B.disabled = false;
+} 
+else {
+p.doOwnFill = false;
+R.disabled = true;
+G.disabled = true;
+B.disabled = true;
+}
+
+}
+
+
+function cAlpha(el)	{
+
+if(el.checked) {
+p.doAlpha = true;
+ownalpha.disabled = false;
+if(!ownalpha.checked)	{}
+else{
+A.disabled = false;
+}
+} 
+else {
+p.doAlpha = false;
+ownalpha.disabled = true;
+A.disabled = true;
+}
+
+}
+
+function cOAlpha(el)	{
+
+if(el.checked) {
+p.doOwnAlpha = true;
+A.disabled = false;
+} 
+else {
+p.doOwnAlpha = false;
+A.disabled = true;
+}
+
+}
+
+function makeModel()	{
+
+var tmp=d.createElement("select");
+tmp.id = "model"
+tmp.onchange = cModel;
+cont.appendChild(tmp);
+
+for(var i = 0; i<=p.models.length-1; i++)	{
+var o=d.createElement("option");
+o.value = p.models[i];
+o.innerHTML = p.models[i];
+tmp.appendChild(o);
+}
+}
+
+
+function cLpoints()	{
+
+
+
+
+}
+
+function makeLight()	{
+
+var tmp=d.createElement("select");
+tmp.id = "light"
+tmp.onchange = cLpointsl;
+cont.appendChild(tmp);
+
+for(var i = 0; i<=p.models.length-1; i++)	{
+var o=d.createElement("option");
+o.value = p.models[i];
+o.innerHTML = p.models[i];
+tmp.appendChild(o);
+}
+
+
+
+}
+
+
+
+function init()	{
+
+multiply.value = p.mul[0];
+sR.value = p.sR
+sG.value = p.sG
+sB.value = p.sB
+
+R.value = p.R
+G.value = p.G
+B.value = p.B
+
+A.value = p.A;
+
+W.value = 300;
+H.value = 300;
+
+bR.value = p.bR
+bG.value = p.bG
+bB.value = p.bB
+
+}
+
+
+
+
+window.onload = init;
+
+
+
+</script>
+
+
+</head>
+
+<body>
+
+<div class="cont" id="cont">
+
+RENDER SETTINGS<br>
+Model:<script>makeModel()</script><br>
+Multiply vertices by: <input type="text" id="multiply" maxlength="4" size="4"><br>
+Apply lights: <input type="checkbox" id="light" checked onclick="cLights(this)"><br>
+Lightpoints:<br>
+<iframe src="lightconf.html" width="200" height="150" frameborder="0" framespacing="0" scrolling="yes" id="IF">badboy</iframe>
+
+
+<br>
+
+
+Do stroke: <input type="checkbox" id="stroke" onclick="cStroke(this)"><br>
+R: <input type="text" id="sR" disabled maxlength="3" size="3"> G: <input type="text" id="sG" disabled maxlength="3" size="3"> B: <input type="text" id="sB" disabled maxlength="3" size="3"><br>
+
+
+Do fill: <input type="checkbox" id="fill" onclick="cFill(this)" checked><br>
+Do own fillcolor: <input type="checkbox" id="ownfill" onclick="cOFill(this)"><br>
+R: <input type="text" id="R" disabled maxlength="3" size="3"> G: <input type="text" id="G" disabled maxlength="3" size="3"> B: <input type="text" id="B" disabled maxlength="3" size="3"><br>
+
+
+Do opacity: <input type="checkbox" id="alpha" onclick="cAlpha(this)" checked><br>
+Do own opacity: <input type="checkbox" id="ownalpha" onclick="cOAlpha(this)"><br>
+O: <input type="text" id="A" disabled maxlength="3" size="3"><br>
+
+
+<br>
+<input type="submit" value="RENDER" onclick="render()"><br>
+<hr>
+DYNAMIC SETTINGS<br>
+Width:<input type="text" id="W" disabled maxlength="4" size="4"><br>
+Height:<input type="text" id="H" disabled maxlength="4" size="4"><br>
+Bgcolor:<br>
+R: <input type="text" id="bR" disabled maxlength="3" size="3"> G: <input type="text" id="bG" disabled maxlength="3" size="3"> B: <input type="text" id="bB" disabled maxlength="3" size="3"><br>
+
+<br>
+<input type="submit" value="UPDATE" onclick="update()" id="upd" disabled>
+
+</div>
+
+
+
+
+
+</body>
+</html>

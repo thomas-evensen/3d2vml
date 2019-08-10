@@ -1,0 +1,88 @@
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>lightconf</title>
+<meta name="Author" content="hitme@norwegianbastard.net">
+
+<style  type="text/css">
+
+	body	{margin-left:5px; margin-top:0px; font-family: arial,verdana, tahoma; font-size: 8pt;}
+
+</style>
+
+
+
+<script language="javascript" type="text/javascript">
+
+	var d = document;
+	var p = parent.parent;
+	var Lnum = p.Lx.length;
+
+
+
+function del(el)	{
+
+	cont.removeChild(eval("Lc"+el));
+
+}
+
+
+
+function add()	{
+
+	var tmp = d.createElement('div');
+	tmp.id = "Lc"+Lnum;
+	tmp.innerHTML = 'LIGHT '+Lnum+' (<a href="#" onclick="del('+Lnum+')">delete</a>)<br>Lx: <input type="text" id="Lx'+Lnum+'" size="10"><br>Ly: <input type="text" id="Ly'+Lnum+'" size="10"><br>Lz: <input type="text" id="Lz'+Lnum+'" size="10"><br>Li:  <input type="text" id="Li'+Lnum+'" size="10"><br>';
+
+	cont.appendChild(tmp);
+
+	Lnum += 1;
+
+}
+
+
+
+function check()	{
+
+	return d.getElementsByTagName('input');
+
+}
+
+
+</script>
+
+</head>
+
+<body bgcolor="#cccccc">
+
+<div id="cont">
+
+<script language="javascript" type="text/javascript">
+
+	for(var i = 0; i<=p.Lx.length-1; i++)	{
+
+		d.write('<div id="Lc'+i+'">');
+		d.write('LIGHT '+i+' (<a href="#" onclick="del('+i+')">delete</a>)<br>');
+		d.write('Lx: <input type="text" id="Lx'+i+'" size="10" value="' + p.Lx[i] + '"><br>');
+		d.write('Ly: <input type="text" id="Ly'+i+'" size="10" value="' + p.Ly[i] + '"><br>');
+		d.write('Lz: <input type="text" id="Lz'+i+'" size="10" value="' + p.Lz[i] + '"><br>');
+		d.write('Li:  <input type="text" id="Li'+i+'" size="10" value="' + p.Li[i] + '"><br>');
+		d.write('</div>');
+
+	}	
+
+</script>
+
+</div><br>
+
+<a href="#" onclick="add()">add</a>
+
+</div>
+
+
+
+
+
+
+</body>
+</html>
