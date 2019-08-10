@@ -1,4 +1,6 @@
-My task was to draw 3dobjects into a web browser using VML.
+### *This was a project written sometimes in 2002. I've uploaded it for historic reasons*
+
+A script that draws 3dobjects into a web browser using VML.
 
 THIS ONLY WORKS IN INTERNET EXPLORER ON PC (only tested on ie6)
 
