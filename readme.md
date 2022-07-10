@@ -1,4 +1,4 @@
-## *This was a project written sometimes in 2002. I've uploaded it for historic reasons*
+## *This was a project written in 2002. I've uploaded it for historic reasons*
 
 A script that draws 3dobjects into a web browser using VML.
 
